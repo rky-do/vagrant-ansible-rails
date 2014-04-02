@@ -1,8 +1,38 @@
 - hosts: vagrant
   user: vagrant
-  sudo: true
   tasks:
-    - apt: update_cache=yes
-    - apt: upgrade=dist
-    - apt: pkg=git update_cache=yes state=latest
-    - apt: pkg=vim update_cache=yes state=latest
+    - name: Run the equivalent of "apt-get update"
+      apt: update_cache=yes
+      sudo: true
+
+    - name: Update all packages to the latest version
+      apt: upgrade=dist
+      sudo: true
+
+    - name: Install base packages
+      apt: pkg={{ item }} state=latest
+      sudo: true
+      with_items:
+        - build-essential
+        - curl
+        - git
+        - libreadline-dev
+        - libssl-dev
+        - libxml2-dev
+        - libxslt1-dev
+        - libyaml-dev
+        - tmux
+        - vim
+
+    - name: Install RVM
+      shell: curl -L https://get.rvm.io | bash
+      sudo: false
+
+    - name: Source the rvm files
+      shell: /bin/bash -c 'source /home/vagrant/.rvm/scripts/rvm'
+      sudo: false
+
+    - name: Install Ruby
+      shell: /home/vagrant/.rvm/bin/rvm install --default 2.1.1
+      sudo: false
+
