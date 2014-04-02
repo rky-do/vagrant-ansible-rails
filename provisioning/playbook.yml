@@ -1,6 +1,8 @@
 - hosts: vagrant
-  sudo: true
   user: vagrant
+  sudo: true
   tasks:
+    - apt: update_cache=yes
+    - apt: upgrade=dist
     - apt: pkg=git update_cache=yes state=latest
     - apt: pkg=vim update_cache=yes state=latest
