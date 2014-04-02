@@ -21,6 +21,7 @@
         - libxml2-dev
         - libxslt1-dev
         - libyaml-dev
+        - nodejs
         - tmux
         - vim
 
@@ -36,3 +37,10 @@
       shell: /home/vagrant/.rvm/bin/rvm install --default 2.1.1
       sudo: false
 
+    - name: Install base global gems
+      shell: /home/vagrant/.rvm/bin/rvm @global do gem install --no-ri --no-rdoc bundler pry pry-doc
+      sudo: false
+
+    - name: Install rails
+      shell: /home/vagrant/.rvm/bin/rvm 2.1.1 do gem install --no-ri --no-rdoc rails
+      sudo: false
