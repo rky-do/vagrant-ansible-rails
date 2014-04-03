@@ -46,4 +46,4 @@
       gem: name=bundler
 
     - name: install rails
-      gem: name=bundler state=latest
+      gem: name=rails state=latest
