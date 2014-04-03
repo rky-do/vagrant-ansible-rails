@@ -16,6 +16,7 @@
         - build-essential
         - curl
         - git
+        - libmysqld-dev
         - libreadline-dev
         - libssl-dev
         - libxml2-dev
