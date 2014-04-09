@@ -2,4 +2,5 @@
   user: vagrant
   roles:
     - role: common
-    - role: rails
+    - role: mysql
+    - role: ruby

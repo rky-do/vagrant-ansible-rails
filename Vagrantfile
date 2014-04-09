@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "rails-env"
+  config.vm.box = "saucy"
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-amd64-vagrant-disk1.box"
 
   config.vm.network "forwarded_port", guest: 3000, host: 3000
