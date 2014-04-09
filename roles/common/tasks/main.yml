@@ -3,15 +3,19 @@
 - name: run the equivalent of "apt-get update"
   apt: update_cache=yes
   sudo: yes
+  tags: common
 
 - name: update all packages to the latest version
   apt: upgrade=dist
   sudo: yes
+  tags: common
 
-- name: install common dependencies for rails gems
+- name: install dependencies for rails enviroment
   apt: pkg={{item}} state=latest update_cache=yes
   sudo: yes
   with_items:
+    - autoconf
+    - bison
     - build-essential
     - curl
     - git
@@ -24,3 +28,5 @@
     - nodejs
     - tmux
     - vim
+    - zlib1g-dev
+  tags: common
