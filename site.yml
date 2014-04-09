@@ -3,4 +3,4 @@
   roles:
     - role: common
     - role: mysql
-    - role: ruby
+    - role: rbenv
