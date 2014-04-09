@@ -1,0 +1,26 @@
+---
+
+- name: run the equivalent of "apt-get update"
+  apt: update_cache=yes
+  sudo: yes
+
+- name: update all packages to the latest version
+  apt: upgrade=dist
+  sudo: yes
+
+- name: install common dependencies for rails gems
+  apt: pkg={{item}} state=latest update_cache=yes
+  sudo: yes
+  with_items:
+    - build-essential
+    - curl
+    - git
+    - libmysqld-dev
+    - libreadline-dev
+    - libssl-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libyaml-dev
+    - nodejs
+    - tmux
+    - vim

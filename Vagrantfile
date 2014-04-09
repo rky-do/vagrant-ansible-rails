@@ -9,12 +9,12 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.33.10"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--memory", "4096"]
   end
 
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "provisioning/playbook.yml"
-    ansible.inventory_path  = "provisioning/hosts"
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "site.yml"
+    ansible.inventory_path  = "hosts"
     ansible.limit = 'all'
   end
 end
