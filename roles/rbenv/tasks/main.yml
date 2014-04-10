@@ -1,33 +1,26 @@
 ---
 
 - name: install rbenv
-  sudo: yes
   git: repo=git://github.com/sstephenson/rbenv.git dest=~/.rbenv
   tags: rbenv
 
 - name: add ~.rbenv/bin to PATH
-  sudo: yes
-  lineinfile: >
-    dest="~/.profile"
-    line="export PATH=$HOME/.rbenv/bin:$PATH"
+  lineinfile: dest="~/.profile" line='export PATH="$HOME/.rbenv/bin:$PATH"'
   tags: rbenv
 
 - name: eval rbenv init in ~/.profile
   sudo: yes
-  lineinfile: >
-    dest="~/.profile"
-    line='eval "$(rbenv init -)"'
+  lineinfile: dest="~/.profile" line='eval "$(rbenv init -)"'
   tags: rbenv
 
 - name: install ruby-build as rbenv plugin
-  sudo: yes
   git: repo=https://github.com/sstephenson/ruby-build.git dest=~/.rbenv/plugins/ruby-build
   tags: rbenv
 
-- name: install ruby 2.1.1
-  command: "rbenv install 2.1.1"
-  tags: rbenv
-
-- name: set default ruby version to 2.1.1
-  command: "rbenv global 2.1.1"
-  tags: rbenv
+# - name: install ruby 2.1.1
+#   command: "rbenv install 2.1.1"
+#   tags: rbenv
+#
+# - name: set default ruby version to 2.1.1
+#   command: "rbenv global 2.1.1"
+#   tags: rbenv
