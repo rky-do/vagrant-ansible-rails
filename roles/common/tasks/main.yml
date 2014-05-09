@@ -14,19 +14,19 @@
   apt: pkg={{item}} state=latest update_cache=yes
   sudo: yes
   with_items:
-    - autoconf
-    - bison
     - build-essential
     - curl
-    - git
-    - libmysqld-dev
-    - libreadline-dev
+    - git-core
     - libssl-dev
+    - libreadline-dev
+    - libyaml-dev
+    - libsqlite3-dev
     - libxml2-dev
     - libxslt1-dev
-    - libyaml-dev
     - nodejs
+    - sqlite3
     - tmux
     - vim
     - zlib1g-dev
   tags: common
+
