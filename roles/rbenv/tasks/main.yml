@@ -20,10 +20,10 @@
   git: repo=https://github.com/sstephenson/ruby-build.git dest=~/.rbenv/plugins/ruby-build
   tags: rbenv
 
-- name: install ruby 2.1.1
-  shell: "curl -fsSL https://gist.github.com/mislav/a18b9d7f0dc5b9efc162.txt | rbenv install --patch 2.1.1"
+- name: install ruby 2.1.2
+  command: rbenv install 2.1.2
   tags: rbenv
 
-- name: set default ruby version to 2.1.1
-  command: "rbenv global 2.1.1"
+- name: set default ruby version to 2.1.2
+  command: "rbenv global 2.1.2"
   tags: rbenv
