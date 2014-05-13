@@ -5,5 +5,8 @@
   tags: rails
 
 - name: install rails
-  gem: name=rails state=latest
+  gem: >
+    name=rails
+    state=latest
+    executable=~/.rbenv/shims/gem
   tags: rails

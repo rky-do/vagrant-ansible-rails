@@ -21,9 +21,11 @@
   tags: rbenv
 
 - name: install ruby 2.1.2
-  command: rbenv install 2.1.2
+  command: >
+    ~/.rbenv/bin/rbenv install 2.1.2
+    creates=~/.rbenv/versions/2.1.2
   tags: rbenv
 
 - name: set default ruby version to 2.1.2
-  command: "rbenv global 2.1.2"
+  command: ~/.rbenv/bin/rbenv global 2.1.2
   tags: rbenv
