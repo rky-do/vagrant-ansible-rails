@@ -1,12 +1,16 @@
 ---
 
 - name: copy gemrc
-  template: src=gemrc dest=~/.gemrc
-  tags: rails
+  template: >
+    src=gemrc
+    dest=~/.gemrc
+  tags:
+    - rails
 
 - name: install rails
   gem: >
     name=rails
     state=latest
     executable=~/.rbenv/shims/gem
-  tags: rails
+  tags:
+    - rails

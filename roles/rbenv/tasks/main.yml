@@ -1,31 +1,46 @@
 ---
 
-- name: install rbenv
-  git: repo=git://github.com/sstephenson/rbenv.git dest=~/.rbenv
-  tags: rbenv
+- name: checkout rbenv_repo
+  git: >
+    repo=git://github.com/sstephenson/rbenv.git
+    dest=~/.rbenv
+  tags:
+    - rbenv
+
+- name: create plugins directory
+  file: state=directory path=~/.rbenv/plugins
+  tags:
+    - rbenv
+
+- name: install ruby-build as rbenv plugin
+  git: >
+    repo=https://github.com/sstephenson/ruby-build.git
+    dest=~/.rbenv/plugins/ruby-build
+  tags:
+    - rbenv
 
 - name: add ~.rbenv/bin to PATH
   lineinfile: >
     dest="~/.bashrc"
     line="export PATH=$HOME/.rbenv/bin:$PATH"
-  tags: rbenv
+  tags:
+    - rbenv
 
 - name: eval rbenv init in ~/.bashrc
   lineinfile: >
     dest="~/.bashrc"
     line='eval "$(rbenv init -)"'
-  tags: rbenv
+  tags:
+    - rbenv
 
-- name: install ruby-build as rbenv plugin
-  git: repo=https://github.com/sstephenson/ruby-build.git dest=~/.rbenv/plugins/ruby-build
-  tags: rbenv
-
-- name: install ruby 2.1.2
+- name: install ruby 2.1.4
   command: >
-    ~/.rbenv/bin/rbenv install 2.1.2
-    creates=~/.rbenv/versions/2.1.2
-  tags: rbenv
+    ~/.rbenv/bin/rbenv install 2.1.4
+    creates=~/.rbenv/versions/2.1.4
+  tags:
+    - rbenv
 
-- name: set default ruby version to 2.1.2
-  command: ~/.rbenv/bin/rbenv global 2.1.2
-  tags: rbenv
+- name: set default ruby version to 2.1.4
+  command: ~/.rbenv/bin/rbenv global 2.1.4
+  tags:
+    - rbenv
