@@ -18,5 +18,5 @@ Vagrant.configure("2") do |config|
     ansible.limit = 'all'
   end
 
-  config.ssh.forward_agent = true
+#  config.ssh.forward_agent = true
 end
